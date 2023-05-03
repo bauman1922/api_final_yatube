@@ -1,20 +1,21 @@
 Как запустить проект:
 
-Клонировать репозиторий и перейти в него в командной строке:
+1. Клонировать репозиторий: 
+git clone git@github.com:bauman1922/api_final_yatube.git
 
-git clone https://github.com/yandex-praktikum/kittygram.git
-cd kittygram
-Cоздать и активировать виртуальное окружение:
+2. Перейти в него в командной строке: 
+cd api_final_yatube
 
-python3 -m venv env
+3. Cоздать и активировать виртуальное окружение: 
+python -m venv env 
 source env/bin/activate
-Установить зависимости из файла requirements.txt:
 
-python3 -m pip install --upgrade pip
+4. Установить зависимости из файла requirements.txt:
+python -m pip install --upgrade pip
 pip install -r requirements.txt
-Выполнить миграции:
 
-python3 manage.py migrate
-Запустить проект:
+5. Выполнить миграции:
+python manage.py migrate
 
-python3 manage.py runserver
+6. Запустить проект:
+python manage.py runserver
