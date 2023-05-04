@@ -29,14 +29,15 @@ class CommentViewSet(viewsets.ModelViewSet):
     serializer_class = CommentSerializer
     permission_classes = (IsOwnerOrReadOnly, IsAuthenticatedOrReadOnly)
 
-    def get_post(self):
-        return get_object_or_404(Post, pk=self.kwargs.get("post_id"))
-
     def get_queryset(self):
-        return self.get_post().comments
+        post_id = self.kwargs.get("post_id")
+        post = get_object_or_404(Post, pk=post_id)
+        return post.comments
 
     def perform_create(self, serializer):
-        serializer.save(author=self.request.user, post=self.get_post())
+        post_id = self.kwargs.get("post_id")
+        post = get_object_or_404(Post, pk=post_id)
+        serializer.save(author=self.request.user, post=post)
 
 
 class CreateListViewSet(mixins.CreateModelMixin, mixins.ListModelMixin,
